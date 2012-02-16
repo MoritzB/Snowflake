@@ -9,17 +9,14 @@ Download Snowflake, create a file called index.php and put them both into a dire
 On top of your index.php, include snowflake.php and initialize it:
 
 `
-
 require_once("snowflake.php");
 
 $snowflake = new Snowflake;
-
 `
 
 Then, at the bottom of your file, run the application!
 
 `
-
 require_once("snowflake.php");
 
 $snowflake = new Snowflake;
@@ -27,7 +24,6 @@ $snowflake = new Snowflake;
 /* Routes here */
 
 $snowflake->run();
-
 `
 
 Now it's time to create some routes!
