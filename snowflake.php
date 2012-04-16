@@ -9,8 +9,22 @@ class Snowflake {
     );
     
     public function __construct() {
-        $this->request['path'] = $_SERVER['PATH_INFO'];
+        $this->request['path'] = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : $this->generatePathFromRequest();
         $this->request['method'] = $_SERVER['REQUEST_METHOD'];
+    }
+
+    protected function generatePathFromRequest(){
+
+        if( null === $_SERVER['REQUEST_URI'] || '' == $_SERVER['REQUEST_URI'] ) {
+            return '/';
+        }
+
+        $path = $_SERVER['REQUEST_URI'];
+        if( $pos = strpos($path, '?') ) {
+            $path = substr($path,0,$pos);
+        }
+
+        return $path;
     }
     
     public function run() {
